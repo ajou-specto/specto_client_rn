@@ -1,4 +1,4 @@
-package com.specto
+package com.spectacle.specto
 
 import android.app.Application
 import com.facebook.react.PackageList

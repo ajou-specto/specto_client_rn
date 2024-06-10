@@ -1,4 +1,4 @@
-package com.specto
+package com.spectacle.specto
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

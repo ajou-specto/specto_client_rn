@@ -81,14 +81,14 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.specto"
+    namespace "com.spectacle.specto"
     defaultConfig {
-        applicationId "com.specto"
+        applicationId "com.spectacle.specto"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        resValue "string", "build_config_package", "com.specto"
+        resValue "string", "build_config_package", "com.spectacle.specto"
         // code push
         resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis())
     }
