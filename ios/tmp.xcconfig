@@ -1,4 +1,0 @@
-API_URL=http:/$()/13.210.239.98:8080
-KAKAO_REST_API_KEY=9a0bd424b1cfd4144df8ad8a3a2d39db
-KAKAO_REDIRECT_URI=https:/$()/spectacle-specto.vercel.app/loading
-KAKAO_CLIENT_SECRET=HKVOwsqW8RdZogyaz8dxHawXYVnvramd
