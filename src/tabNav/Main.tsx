@@ -29,8 +29,8 @@ function Main() {
       initialRouteName="SpecScreen"
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { height: Platform.OS === 'ios' ? 76 : 56 },
-        tabBarItemStyle: { marginVertical: Platform.OS === 'ios' ? 3 : 7.5 },
+        tabBarStyle: { height: 56 },
+        tabBarItemStyle: { marginVertical: 7.5 },
       }}>
       <Tab.Screen
         name="MyPageScreen"
