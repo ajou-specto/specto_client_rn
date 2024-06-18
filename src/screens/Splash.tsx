@@ -39,6 +39,7 @@ function Splash() {
         <View style={styles.justifyEnd}>
           <LineBlue />
         </View>
+        <Text className="mt-[20] text-[#0094FF]">Scroll down!</Text>
       </View>
 
       <View style={[styles.container, styles.bgBlue, { overflow: 'hidden' }]}>
@@ -49,7 +50,9 @@ function Splash() {
         <View style={styles.justifyEnd}>
           <LineWhite />
         </View>
+        <Text className="mt-[20] text-white">Scroll down!</Text>
       </View>
+
       <View style={[styles.container, styles.bgBlue]}>
         <RadialBlue style={styles.radial} />
         <View style={styles.contentContainer}>
@@ -58,7 +61,9 @@ function Splash() {
         <View style={styles.justifyEnd}>
           <LineWhite />
         </View>
+        <Text className="mt-[20] text-white">Scroll down!</Text>
       </View>
+
       <View style={[styles.container, styles.bgBlue]}>
         <RadialBlue style={styles.radial} />
         <View style={styles.contentContainer}>
