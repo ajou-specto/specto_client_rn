@@ -61,6 +61,10 @@ function Login({ navigation }: Readonly<AuthProps>) {
     // 카카오 로그인 링크로 이동하는 코드 추가
   };
 
+  const handlePrivacy = () => {
+    navigation.navigate('Privacy');
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
@@ -103,6 +107,9 @@ function Login({ navigation }: Readonly<AuthProps>) {
         >
           <Text style={styles.startText}>시작하기</Text>
         </TouchableOpacity> */}
+        <TouchableOpacity onPress={handlePrivacy}>
+          <Text className="font-bold text-[#636366]">개인정보처리방침</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

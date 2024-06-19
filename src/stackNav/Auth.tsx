@@ -4,12 +4,14 @@ import Login from '../screens/Login';
 import LoginKakao from '@screens/LoginKakao';
 import LoginGoogle from '@screens/LoginGoogle';
 import LoginTest from '@screens/LoginTest';
+import Privacy from '@screens/Privacy';
 
 export type AuthStackParamList = {
   Login: undefined;
   LoginKakao: undefined;
   LoginGoogle: undefined;
   LoginTest: undefined;
+  Privacy: undefined;
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -36,6 +38,11 @@ function Auth() {
         name="LoginTest"
         component={LoginTest}
         options={{ title: '일반 로그인', headerShown: true }}
+      />
+      <AuthStack.Screen
+        name="Privacy"
+        component={Privacy}
+        options={{ headerShown: true, title: '개인정보처리방침' }}
       />
     </AuthStack.Navigator>
   );
