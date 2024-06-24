@@ -87,7 +87,7 @@ function MyPage({ navigation }: MyPageProps) {
       <Text style={styles.pageTitle}>마이페이지</Text>
       <View style={styles.horizontalLine}></View>
       <View style={styles.greetingTextContainer}>
-        <Text style={styles.greetingText}>안녕하세요 김철수님!</Text>
+        <Text style={styles.greetingText}>안녕하세요 스펙토 유저님!</Text>
       </View>
       <View style={styles.profileInfoContainer}>
         <View style={styles.profileInfoItem}>
@@ -97,20 +97,30 @@ function MyPage({ navigation }: MyPageProps) {
       </View>
       <View style={styles.mainSeparator} />
       <View style={styles.menuContainer}>
-        <TouchableOpacity onPress={handleChangeProfile}>
-          <MenuItem text="프로필 정보 변경" top={240} />
+        <TouchableOpacity
+          style={styles.menuItemTouchable}
+          onPress={handleChangeProfile}>
+          <MenuItem text="프로필 정보 변경" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handle1to1InquiryPress}>
-          <MenuItem text="1:1 문의" top={285} />
+        <TouchableOpacity
+          style={styles.menuItemTouchable}
+          onPress={handle1to1InquiryPress}>
+          <MenuItem text="1:1 문의" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handlePrivacy}>
-          <MenuItem text="개인정보처리방침" top={330} />
+        <TouchableOpacity
+          style={styles.menuItemTouchable}
+          onPress={handlePrivacy}>
+          <MenuItem text="개인정보처리방침" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleLogoutPress}>
-          <MenuItem text="로그아웃" top={375} />
+        <TouchableOpacity
+          style={styles.menuItemTouchable}
+          onPress={handleLogoutPress}>
+          <MenuItem text="로그아웃" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleServiceWithdrawalPress}>
-          <MenuItem text="서비스 탈퇴" top={420} />
+        <TouchableOpacity
+          style={styles.menuItemTouchable}
+          onPress={handleServiceWithdrawalPress}>
+          <MenuItem text="서비스 탈퇴" />
         </TouchableOpacity>
       </View>
       {showPopup && (
@@ -158,10 +168,10 @@ function MyPage({ navigation }: MyPageProps) {
   );
 }
 
-const MenuItem = ({ text, top }: { text: string; top: number }) => (
+const MenuItem = ({ text }: { text: string }) => (
   <View style={styles.menuItemContainer}>
-    <Text style={[styles.menuItemText, { top }]}>{text}</Text>
-    <View style={[styles.menuItemSeparator, { top: top + 29 }]} />
+    <Text style={styles.menuItemText}>{text}</Text>
+    <View style={styles.menuItemSeparator} />
   </View>
 );
 
@@ -243,26 +253,25 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     left: 31,
-    top: 90,
+    top: 331,
   },
   menuItemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    marginBottom: 20,
   },
   menuItemText: {
     color: '#373737',
     fontSize: 14,
     fontFamily: 'Inter-Medium',
     fontWeight: '500',
-    position: 'absolute',
   },
   menuItemSeparator: {
     width: 315,
     height: 3,
-    position: 'absolute',
     backgroundColor: '#F3F2F2',
-    left: 0,
+    marginTop: 10,
+  },
+  menuItemTouchable: {
+    width: '100%', // Full width to ensure the touchable area covers the item
   },
   popupOverlay: {
     ...StyleSheet.absoluteFillObject,
