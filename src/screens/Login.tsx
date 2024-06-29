@@ -14,11 +14,21 @@ import Logo from '@assets/images/logo.svg';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '@stackNav/Auth';
 import { Icon } from 'react-native-vector-icons/Icon';
+import {
+  AppleButton,
+  appleAuth,
+} from '@invertase/react-native-apple-authentication';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import axiosInstance from '@api/axiosInstance';
+import { RootStackParamList } from 'AppInner';
+import { CompositeScreenProps } from '@react-navigation/native';
 const VIEW_HEIGHT = Dimensions.get('window').height; // 화면 세로길이
 
 type AuthProps = NativeStackScreenProps<AuthStackParamList, 'Login'>;
+type RootProps = NativeStackScreenProps<RootStackParamList>;
+type Props = CompositeScreenProps<AuthProps, RootProps>;
 
-function Login({ navigation }: Readonly<AuthProps>) {
+function Login({ navigation }: Readonly<Props>) {
   const kakaoLogin = () => {
     navigation.navigate('LoginKakao');
   };
@@ -65,6 +75,61 @@ function Login({ navigation }: Readonly<AuthProps>) {
     navigation.navigate('Privacy');
   };
 
+  const handleAppleLogin = () => {
+    Alert.alert('', "'스펙토'에서 'Apple'을 열려고 합니다.", [
+      {
+        text: '취소',
+        onPress: () => console.log('Apple 취소 버튼을 눌렀습니다.'),
+        style: 'cancel',
+      },
+      {
+        text: '열기',
+        onPress: () => {
+          appleLogin();
+        },
+      },
+    ]);
+    // 카카오 로그인 링크로 이동하는 코드 추가
+  };
+
+  async function appleLogin() {
+    // performs login request
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: appleAuth.Operation.LOGIN,
+      // Note: it appears putting FULL_NAME first is important, see issue #293
+      requestedScopes: [appleAuth.Scope.FULL_NAME, appleAuth.Scope.EMAIL],
+    });
+
+    // get current authentication state for user
+    // /!\ This method must be tested on a real device. On the iOS simulator it always throws an error.
+    const credentialState = await appleAuth.getCredentialStateForUser(
+      appleAuthRequestResponse.user,
+    );
+
+    // use credentialState response to ensure the user is authenticated
+    if (credentialState === appleAuth.State.AUTHORIZED) {
+      // user is authenticated
+      const { fullName, email, identityToken } = appleAuthRequestResponse;
+      console.log(fullName, email, identityToken);
+      try {
+        const res = await axiosInstance.get(
+          `/api/v1/login?id_token=${identityToken}&social=apple`,
+        );
+        console.log('apple login', res);
+        const { accessToken, refreshToken } = res.data;
+
+        // 토큰 저장 (SecureStore)
+        await EncryptedStorage.setItem('accessToken', accessToken);
+        await EncryptedStorage.setItem('refreshToken', refreshToken);
+
+        // 홈화면으로 이동
+        navigation.navigate('Main');
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
@@ -107,6 +172,16 @@ function Login({ navigation }: Readonly<AuthProps>) {
         >
           <Text style={styles.startText}>시작하기</Text>
         </TouchableOpacity> */}
+        <AppleButton
+          buttonStyle={AppleButton.Style.BLACK}
+          buttonType={AppleButton.Type.SIGN_IN}
+          style={{
+            width: '80%', // You must specify a width
+            height: 50, // You must specify a height
+            marginBottom: 20,
+          }}
+          onPress={handleAppleLogin}
+        />
         <TouchableOpacity onPress={handlePrivacy}>
           <Text className="font-bold text-[#636366]">개인정보처리방침</Text>
         </TouchableOpacity>
