@@ -47,6 +47,7 @@
 		5B7EB9410499542E8C5724F5 /* Pods-specto-spectoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-specto-spectoTests.debug.xcconfig"; path = "Target Support Files/Pods-specto-spectoTests/Pods-specto-spectoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-specto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-specto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A2AB082C15E5E500C43237 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		68F8FB732C2944A7006C6BFD /* specto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = specto.entitlements; path = specto/specto.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = specto/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-specto-spectoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-specto-spectoTests.release.xcconfig"; path = "Target Support Files/Pods-specto-spectoTests/Pods-specto-spectoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A08951B42DA3133D80ED64E1 /* Pods-specto.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-specto.staging.xcconfig"; path = "Target Support Files/Pods-specto/Pods-specto.staging.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		13B07FAE1A68108700A75B9A /* specto */ = {
 			isa = PBXGroup;
 			children = (
+				68F8FB732C2944A7006C6BFD /* specto.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -480,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODEPUSH_KEY = "hmFM1HfgnUsImA2-LeIjpKUXlp5hr1ee0GzFd";
+				CODE_SIGN_ENTITLEMENTS = specto/specto.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -512,6 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = specto/specto.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 22J322ZQ96;
 				INFOPLIST_FILE = specto/Info.plist;
@@ -618,6 +622,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = specto/specto.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 22J322ZQ96;
 				INFOPLIST_FILE = specto/Info.plist;
